@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title #{title}
+    link(rel='stylesheet', href='/static/style.css')
+    script(src='static/jquery-1.10.2.js')
+    script(src='https://cdn.firebase.com/v0/firebase.js')
+    block scripts
+
+  body
+    header
+      h1: a(href='/') W.U.B.Ex
+      .navbar
+        ul
+          li: a#selling(href='sellingOffers') Selling
+          li: a#buying(href='buyingOffers') Buying
+          li: a#account(href='account') Yours
+          li: a#create(href='create') Create
+    .container
+      .main-content
+        block content
+      .sidebar
+        block sidebar
+
+    footer
+      p Maintained by Bryan Jensen '15

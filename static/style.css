@@ -1,0 +1,101 @@
+* {
+  /*margin: 0;*/
+  /*padding: 0;*/
+}
+
+html {
+  display: block;
+  width: -webkit-calc(100% - 50px);
+  width:    -moz-calc(100% - 50px);
+  width:      -o-calc(100% - 50px);
+  width:         calc(100% - 50px);
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+div {
+  position: relative;
+}
+
+footer {
+  clear: both;
+}
+
+.navbar {
+  width: 100%;
+}
+
+.navbar * {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline-block;
+  width: calc(100% / 4 - 8px);
+  text-align: center;
+  margin: 0 4px;
+}
+
+.navbar li a {
+  display: block;
+  line-height: 40px;
+  color: #FFFFFF;
+}
+
+.navbar li a#selling {
+  background-color: #FF7400;
+}
+
+.navbar li a#buying {
+  background-color: #1240AB;
+}
+
+.navbar li a#account {
+  background-color: #00CC00;
+}
+
+.navbar li a#create {
+  background-color: #009999;
+}
+
+.bookEntry {
+  display: block;
+  float: left;
+  width: 300px;
+  height: 100px;
+  border: 1px dotted gray;
+}
+
+.bookEntry div {
+  display: block;
+}
+
+.titleDiv {
+  float: left;
+  font-size: 20px;
+}
+
+.classDiv {
+  float: left;
+}
+
+.priceDiv {
+  float: right;
+  font-size: 40px;
+}
+
+.addedDiv {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.sellerDiv {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

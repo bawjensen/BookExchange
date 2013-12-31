@@ -1,0 +1,14 @@
+extend layout
+
+block scripts
+	script(type='text/javascript', src='static/scripts_selling.js')
+
+block content
+	script(type='text/template').
+		<div class="bookEntry">
+			<div class="titleDiv">{title}</div>
+			<div class="classDiv">{class}</div>
+			<div class="priceDiv">{price}</div>
+			<div class="addedDiv">{added}</div>
+			<div class="sellerDiv">{seller}</div>
+		</div>

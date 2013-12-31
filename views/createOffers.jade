@@ -1,0 +1,12 @@
+extend layout
+
+block scripts
+	script(type='text/javascript', src='static/scripts_create.js')
+
+block content
+	label Class:
+		input(type='text', id='class')
+	label Book Title:
+		input(type='text', id='title')
+	label Price:
+		input(type='number', id='price')
