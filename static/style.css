@@ -1,15 +1,12 @@
-* {
-  /*margin: 0;*/
-  /*padding: 0;*/
-}
-
 html {
   display: block;
-  width: -webkit-calc(100% - 50px);
-  width:    -moz-calc(100% - 50px);
-  width:      -o-calc(100% - 50px);
-  width:         calc(100% - 50px);
+  width: -webkit-calc(90%);
+  width:    -moz-calc(90%);
+  width:      -o-calc(90%);
+  width:         calc(90%);
   margin: 0 auto;
+
+  font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
 }
 
 a {
@@ -24,8 +21,22 @@ footer {
   clear: both;
 }
 
+/* ------------------------------------------ */
+
+.mainContent {
+  min-height: 500px;
+}
+
+/* ------------------------------------------ */
+
+.siteName {
+  display: inline-block;
+  width: 200px;
+}
+
 .navbar {
-  width: 100%;
+  display: inline-block;
+  width: calc(100% - 200px);
 }
 
 .navbar * {
@@ -36,6 +47,7 @@ footer {
 .navbar li {
   display: inline-block;
   width: calc(100% / 4 - 8px);
+  min-width: 100px;
   text-align: center;
   margin: 0 4px;
 }
@@ -62,12 +74,44 @@ footer {
   background-color: #009999;
 }
 
+/* ------------------------------------------ */
+
+.creationDiv {
+  clear: both;
+  width: 800px;
+  padding: 40px 0;
+  margin: 0 auto;
+  border-bottom: 1px solid #EEEEEE;
+  font-size: 20px;
+}
+
+.creationDiv select {
+  font-size: 18px;
+}
+
+.creationDiv label input {
+  font-size: 16px;
+}
+
+/* ------------------------------------------ */
+
+.sellDisplayArea {
+  clear: both;
+  margin: 30px 0px;
+}
+
+.buyDisplayArea {
+  clear: both;
+  margin: 30px 0px;
+}
+
 .bookEntry {
-  display: block;
-  float: left;
-  width: 300px;
+  display: inline-block;
+  width: calc(33% - 40px);
+  min-width: 300px;
   height: 100px;
-  border: 1px dotted gray;
+  padding: 20px;
+  border-right: 1px solid #EEEEEE;
 }
 
 .bookEntry div {
@@ -75,27 +119,41 @@ footer {
 }
 
 .titleDiv {
-  float: left;
-  font-size: 20px;
+  position: absolute;
+  text-align: center;
+  margin: 0 auto;
+  width: 90%;
+  font-size: 30px;
+  height: 30px;
 }
 
 .classDiv {
+  margin-top: 30px;
   float: left;
+  font-size: 30px;
 }
 
 .priceDiv {
+  margin-top: 30px;
   float: right;
   font-size: 40px;
+  color: #999999;
 }
 
 .addedDiv {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 20px;
+  right: 20px;
+  font-size: 13px;
+  color: #BBBBBB;
 }
 
 .sellerDiv {
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: 20px;
+  left: 20px;
+  font-size: 14px;
+  color: #BBBBBB;
 }
+
+/* ------------------------------------------ */

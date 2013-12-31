@@ -4,13 +4,14 @@ html
     meta(charset='utf-8')
     title #{title}
     link(rel='stylesheet', href='/static/style.css')
-    script(src='static/jquery-1.10.2.js')
     script(src='https://cdn.firebase.com/v0/firebase.js')
+    script(src='static/jquery-1.10.2.js')
+    script(src='static/scripts_display.js')
     block scripts
 
   body
     header
-      h1: a(href='/') W.U.B.Ex
+      .siteName: h1: a(href='/') W.U.B.Ex #{title}
       .navbar
         ul
           li: a#selling(href='sellingOffers') Selling
@@ -18,7 +19,7 @@ html
           li: a#account(href='account') Yours
           li: a#create(href='create') Create
     .container
-      .main-content
+      .mainContent
         block content
       .sidebar
         block sidebar

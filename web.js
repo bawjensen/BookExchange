@@ -12,24 +12,28 @@ app.configure(function() {
 });
 
 app.get('/', function(req, res) {
-  res.render( 'index.jade', { 'title': 'W.U.B.Ex' } );
+  res.render( 'index.jade', { 'title': ' ' } );
 });
 
 app.get('/sellingOffers', function(req, res) {
-  res.render( 'forSale.jade', { 'title': 'W.U.B.Ex' } );
+  res.render( 'forSale.jade', { 'title': 'Offers' } );
 });
 
 app.get('/buyingOffers', function(req, res) {
-  res.render( 'requests.jade', { 'title': 'W.U.B.Ex' } );
+  res.render( 'requests.jade', { 'title': 'Requests' } );
 });
 
 app.get('/account', function(req, res) {
-  res.render( 'account.jade', { 'title': 'W.U.B.Ex' } );
+  res.render( 'account.jade', { 'title': 'Account' } );
 });
 
 app.get('/create', function(req, res) {
-  res.render( 'createOffers.jade', { 'title': 'W.U.B.Ex' } );
+  res.render( 'createOffers.jade', { 'title': 'Create' } );
 });
+
+app.get('/test', function(req, res) {
+  res.render( 'stupid.html' );
+})
 
 var port = process.env.PORT || 7500;
 
