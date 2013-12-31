@@ -76,6 +76,16 @@ footer {
 
 /* ------------------------------------------ */
 
+.websiteTitleDiv {
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  color: #FF6600;
+}
+
+/* ------------------------------------------ */
+
 .creationDiv {
   clear: both;
   width: 800px;
