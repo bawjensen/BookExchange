@@ -4,20 +4,32 @@ html
     meta(charset='utf-8')
     title #{title}
     link(rel='stylesheet', href='/static/style.css')
-    script(src='https://cdn.firebase.com/v0/firebase.js')
-    script(src='static/jquery-1.10.2.js')
-    script(src='static/scripts_display.js')
+    script(type='text/javascript', src='https://cdn.firebase.com/v0/firebase.js')
+    script(type='text/javascript', src='https://cdn.firebase.com/v0/firebase-simple-login.js')
+    script(type='text/javascript', src='static/jquery-1.10.2.js')
+    script(type='text/javascript', src='static/scripts_overall.js')
     block scripts
 
   body
     header
-      .siteName: h1: a(href='/') W.U.B.Ex #{title}
+      .hiddenHeaderMenu
+        .displayLink
+          //- | Log In | Sign Up
+        .logInArea
+          form#logIn
+            input#username(type='email', placeholder='Email')
+            input#password(type='password', placeholder='Password')
+            input#logIn(type='submit', value='Log In')
+            input#signUp(type='submit', value='Sign Up')
+            input#logOut(type='submit', value='Log Out')
+      .siteName: a(href='/') WUBEx
       .navbar
         ul
           li: a#selling(href='sellingOffers') Selling
           li: a#buying(href='buyingOffers') Buying
           li: a#account(href='account') Yours
           li: a#create(href='create') Create
+        
     .container
       .mainContent
         block content

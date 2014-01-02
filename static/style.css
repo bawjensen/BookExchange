@@ -13,29 +13,115 @@ a {
   text-decoration: none;
 }
 
+a:visited {
+  color: inherit;
+}
+
 div {
   position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  position: relative;
+  clear: both;
+  height: 40px;
+  margin: 20px 0;
 }
 
 footer {
   clear: both;
 }
 
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"] {
+  outline: none;
+  border: 2px solid #C4C4C4;
+  border-radius: 5px;
+  -webkit-transition: border .5s, color .5s;
+          transition: border .5s, color .5s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border: 2px solid #29D829;
+}
+
+input[type="text"]:invalid,
+input[type="number"]:invalid,
+input[type="email"]:invalid,
+input[type="password"]:invalid {
+  border: 2px solid #FFD600;
+}
+
 /* ------------------------------------------ */
 
 .mainContent {
-  min-height: 500px;
+  min-height: 800px;
 }
 
 /* ------------------------------------------ */
 
+.hiddenHeaderMenu {
+  position: absolute;
+  width: 300px;
+  border-radius: 5px;
+  z-index: 5;
+  background-color: #FFFFFF;
+  opacity: 0.90;
+  right: 0;
+  bottom: -20px;
+}
+
+.hiddenHeaderMenu .displayLink {
+  text-align: right;
+  width: 100%;
+  cursor: pointer;
+}
+
+.hiddenHeaderMenu .logInArea {
+  width: 100%;
+  display: none;
+}
+
+.hiddenHeaderMenu .logInArea input {
+  width: 144px;
+}
+
+.hiddenHeaderMenu .logInArea input[type="submit"] {
+  width: auto;
+}
+
+input[type="submit"]#logIn {
+  float: left;
+}
+
+input[type="submit"]#signUp {
+  float: right;
+}
+
+input[type="submit"]#logOut {
+  float: right;
+}
+
 .siteName {
-  display: inline-block;
+  float: left;
   width: 200px;
+  text-align: center;
+  height: 100%;
+  line-height: 40px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #FF8622;
 }
 
 .navbar {
-  display: inline-block;
+  float: left;
   width: calc(100% - 200px);
 }
 
@@ -59,19 +145,19 @@ footer {
 }
 
 .navbar li a#selling {
-  background-color: #FF7400;
+  background-color: #FF8622;
 }
 
 .navbar li a#buying {
-  background-color: #1240AB;
+  background-color: #FC6500;
 }
 
 .navbar li a#account {
-  background-color: #00CC00;
+  background-color: #FF5200;
 }
 
 .navbar li a#create {
-  background-color: #009999;
+  background-color: #FF2900;
 }
 
 /* ------------------------------------------ */
@@ -105,14 +191,45 @@ footer {
 
 /* ------------------------------------------ */
 
-.sellDisplayArea {
+.displayArea {
   clear: both;
   margin: 30px 0px;
 }
 
+.displayArea:before {
+  display: block;
+  font-size: 30px;
+  text-align: center;
+  width: 100%;
+  border-bottom: 1px solid;
+  margin-bottom: 30px;
+}
+
+.personalDisplayArea {
+  display: none;
+}
+
+.personalDisplayArea:before {
+  content: 'Yours';
+  color: #FF8622;
+}
+
+.sellDisplayArea {
+  display: none;
+}
+
+.sellDisplayArea:before {
+  content: 'Offers';
+  color: #FC6500;
+}
+
 .buyDisplayArea {
-  clear: both;
-  margin: 30px 0px;
+  display: none;
+}
+
+.buyDisplayArea:before {
+  content: 'Requests';
+  color: #FF5200;
 }
 
 .bookEntry {
@@ -122,6 +239,7 @@ footer {
   height: 100px;
   padding: 20px;
   border-right: 1px solid #EEEEEE;
+  border-bottom: 1px solid #EEEEEE;
 }
 
 .bookEntry div {
@@ -138,7 +256,7 @@ footer {
 }
 
 .classDiv {
-  margin-top: 30px;
+  margin-top: 35px;
   float: left;
   font-size: 30px;
 }
