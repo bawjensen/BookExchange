@@ -1,12 +1,5 @@
-html {
-  display: block;
-  width: -webkit-calc(90%);
-  width:    -moz-calc(90%);
-  width:      -o-calc(90%);
-  width:         calc(90%);
-  margin: 0 auto;
-
-  font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
+body {
+  font-family: 'Handlee', cursive;;
 }
 
 a {
@@ -24,10 +17,16 @@ div {
 }
 
 header {
-  position: relative;
-  clear: both;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 40px;
-  margin: 20px 0;
+  background: -webkit-linear-gradient(#FFAD00, #FC5B00); /* For Safari */
+  background: -o-linear-gradient(#FFAD00, #FC5B00); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#FFAD00, #FC5B00); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#FFAD00, #FC5B00); /* Standard syntax */
 }
 
 footer {
@@ -61,6 +60,16 @@ input[type="password"]:invalid {
 
 /* ------------------------------------------ */
 
+.container {
+  display: block;
+  width: -webkit-calc(90%);
+  width:    -moz-calc(90%);
+  width:      -o-calc(90%);
+  width:         calc(90%);
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
 .mainContent {
   min-height: 800px;
 }
@@ -75,7 +84,8 @@ input[type="password"]:invalid {
   background-color: #FFFFFF;
   opacity: 0.90;
   right: 0;
-  bottom: -20px;
+  bottom: -30px;
+  padding: 0px 10px;
 }
 
 .hiddenHeaderMenu .displayLink {
@@ -117,7 +127,8 @@ input[type="submit"]#logOut {
   line-height: 40px;
   font-size: 30px;
   font-weight: bold;
-  color: #FF8622;
+  /*color: #FF8622;*/
+  color: #FFFFFF;
 }
 
 .navbar {
@@ -135,6 +146,7 @@ input[type="submit"]#logOut {
   width: calc(100% / 4 - 8px);
   min-width: 100px;
   text-align: center;
+  font-size: 18px;
   margin: 0 4px;
 }
 
@@ -142,22 +154,6 @@ input[type="submit"]#logOut {
   display: block;
   line-height: 40px;
   color: #FFFFFF;
-}
-
-.navbar li a#selling {
-  background-color: #FF8622;
-}
-
-.navbar li a#buying {
-  background-color: #FC6500;
-}
-
-.navbar li a#account {
-  background-color: #FF5200;
-}
-
-.navbar li a#create {
-  background-color: #FF2900;
 }
 
 /* ------------------------------------------ */
@@ -246,7 +242,7 @@ input[type="submit"]#logOut {
   display: block;
 }
 
-.titleDiv {
+.classDiv {
   position: absolute;
   text-align: center;
   margin: 0 auto;
@@ -255,7 +251,7 @@ input[type="submit"]#logOut {
   height: 30px;
 }
 
-.classDiv {
+.titleDiv {
   margin-top: 35px;
   float: left;
   font-size: 30px;
@@ -268,7 +264,7 @@ input[type="submit"]#logOut {
   color: #999999;
 }
 
-.addedDiv {
+.sellerDiv {
   position: absolute;
   bottom: 20px;
   right: 20px;
@@ -276,7 +272,7 @@ input[type="submit"]#logOut {
   color: #BBBBBB;
 }
 
-.sellerDiv {
+.addedDiv {
   position: absolute;
   bottom: 20px;
   left: 20px;

@@ -75,6 +75,10 @@ $(function() {
 		auth.createUser(username, password, function(err, user) {
 			if (!err) {
 				console.log(user.email + ' signed up.');
+				auth.login('password', {
+					email: $('#username').val(),
+					password: $('#password').val()
+				});
 			}
 			else {
 				if (err.code == 'EMAIL_TAKEN') {
@@ -82,6 +86,8 @@ $(function() {
 				}
 				else {
 					alert('Error creating user.');
+					alert(err);
+					console.log(err);
 				}
 			}
 		});
