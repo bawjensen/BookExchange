@@ -1,6 +1,7 @@
 $(function() {
 	var currentUser;
-	var template;
+	var offerTemplate;
+	var requestTemplate;
 
 	var initialFadeInTime = 1250;
 
@@ -34,10 +35,15 @@ $(function() {
 
 		clearDisplayAreas();
 
-		$.get('/static/template.html', function(data) {
-			template = data;
+		$.get('/static/offerTemplate.html', function(data) {
+			offerTemplate = data;
 
-			setUpFirebaseCallbacks();
+			$.get('/static/requestTemplate.html', function(data) {
+				requestTemplate = data;
+
+				setUpFirebaseCallbacks();
+			});
+
 		});
 	});
 
@@ -138,15 +144,15 @@ $(function() {
 			var data = dataSnapshot.val();
 
 			if (data.owner == currentUser) {
-				$('.personalDisplayArea').append( fillTemplate(template, data, dataSnapshot.name()) );
+				$('.personalDisplayArea').append( fillTemplate(offerTemplate, data, dataSnapshot.name()) );
 			}
 
 			else if (data.type == 'offer' && $('.sellDisplayArea').length) {
-				$('.sellDisplayArea').append( fillTemplate(template, data, dataSnapshot.name()) );
+				$('.sellDisplayArea').append( fillTemplate(offerTemplate, data, dataSnapshot.name()) );
 			}
 
 			else if (data.type == 'request' && $('.buyDisplayArea').length) {
-				$('.buyDisplayArea').append( fillTemplate(template, data, dataSnapshot.name()) );
+				$('.buyDisplayArea').append( fillTemplate(offerTemplate, data, dataSnapshot.name()) );
 			}
 		});
 
@@ -167,15 +173,15 @@ $(function() {
 		});
 	}
 
-	function fillTemplate(template, data, id) {
-		template = template.replace("{id}", id);
-		template = template.replace("{title}", data.title);
-		template = template.replace("{class}", data.class);
-		template = template.replace("{price}", data.price);
-		template = template.replace("{added}", timeAgo(data.added));
-		template = template.replace("{seller}", data.owner);
+	function fillTemplate(offerTemplate, data, id) {
+		offerTemplate = offerTemplate.replace("{id}", id);
+		offerTemplate = offerTemplate.replace("{title}", data.title);
+		offerTemplate = offerTemplate.replace("{class}", data.class);
+		offerTemplate = offerTemplate.replace("{price}", data.price);
+		offerTemplate = offerTemplate.replace("{added}", timeAgo(data.added));
+		offerTemplate = offerTemplate.replace("{seller}", data.owner);
 
-		return template;
+		return offerTemplate;
 
 	}
 

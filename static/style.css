@@ -206,7 +206,7 @@ input[type="submit"]#logOut {
 }
 
 .personalDisplayArea:before {
-  content: 'Yours';
+  content: 'Your Books';
   color: #FF8622;
 }
 
@@ -215,7 +215,7 @@ input[type="submit"]#logOut {
 }
 
 .sellDisplayArea:before {
-  content: 'Offers';
+  content: 'Selling';
   color: #FC6500;
 }
 
@@ -224,7 +224,7 @@ input[type="submit"]#logOut {
 }
 
 .buyDisplayArea:before {
-  content: 'Requests';
+  content: 'Buying';
   color: #FF5200;
 }
 
