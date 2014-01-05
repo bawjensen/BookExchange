@@ -13,6 +13,13 @@ html
 
   body
     header
+      .siteName: a(href='/') WUBEx
+      .navbar
+        ul
+          li: a#selling(href='sellingOffers') Books for Sale
+          li: a#buying(href='buyingOffers') Book Requests
+          li: a#create(href='create') Create New Offer
+          li: a#account(href='account') Your Acccount
       .hiddenHeaderMenu
         .displayLink
         .logInArea
@@ -22,13 +29,9 @@ html
             input#logIn(type='submit', value='Log In')
             input#signUp(type='submit', value='Sign Up')
             input#logOut(type='submit', value='Log Out')
-      .siteName: a(href='/') WUBEx
-      .navbar
-        ul
-          li: a#selling(href='sellingOffers') Books for Sale
-          li: a#buying(href='buyingOffers') Book Requests
-          li: a#create(href='create') Create New Offer
-          li: a#account(href='account') Your Acccount
+      .search
+        input#searchBooks(type='search', placeholder='Search Books')
+        input#searchClasses(type='search', placeholder='Search Classes')
         
     .container
       .mainContent

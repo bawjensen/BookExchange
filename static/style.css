@@ -33,10 +33,7 @@ footer {
   clear: both;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="email"],
-input[type="password"] {
+input:not([type=submit]):not([type=file]) {
   outline: none;
   border: 2px solid #C4C4C4;
   border-radius: 5px;
@@ -44,17 +41,11 @@ input[type="password"] {
           transition: border .5s, color .5s;
 }
 
-input[type="text"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
+input:not([type=submit]):not([type=file]):focus {
   border: 2px solid #29D829;
 }
 
-input[type="text"]:invalid,
-input[type="number"]:invalid,
-input[type="email"]:invalid,
-input[type="password"]:invalid {
+input:not([type=submit]):not([type=file]):invalid {
   border: 2px solid #FFD600;
 }
 
@@ -75,6 +66,43 @@ input[type="password"]:invalid {
 }
 
 /* ------------------------------------------ */
+
+.siteName {
+  float: left;
+  width: 200px;
+  text-align: center;
+  height: 100%;
+  line-height: 40px;
+  font-size: 30px;
+  font-weight: bold;
+  /*color: #FF8622;*/
+  color: #FFFFFF;
+}
+
+.navbar {
+  float: left;
+  width: calc(100% - 200px);
+}
+
+.navbar * {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline-block;
+  width: calc(100% / 4 - 8px);
+  min-width: 100px;
+  text-align: center;
+  font-size: 18px;
+  margin: 0 4px;
+}
+
+.navbar li a {
+  display: block;
+  line-height: 40px;
+  color: #FFFFFF;
+}
 
 .hiddenHeaderMenu {
   position: absolute;
@@ -119,41 +147,15 @@ input[type="submit"]#logOut {
   float: right;
 }
 
-.siteName {
-  float: left;
-  width: 200px;
-  text-align: center;
-  height: 100%;
-  line-height: 40px;
-  font-size: 30px;
-  font-weight: bold;
-  /*color: #FF8622;*/
-  color: #FFFFFF;
+.search {
+  position: absolute;
+  bottom: -50px;
+  left: 10px;
 }
 
-.navbar {
-  float: left;
-  width: calc(100% - 200px);
-}
-
-.navbar * {
-  margin: 0;
-  padding: 0;
-}
-
-.navbar li {
-  display: inline-block;
-  width: calc(100% / 4 - 8px);
-  min-width: 100px;
-  text-align: center;
-  font-size: 18px;
-  margin: 0 4px;
-}
-
-.navbar li a {
+.search input {
   display: block;
-  line-height: 40px;
-  color: #FFFFFF;
+  width: 200px;
 }
 
 /* ------------------------------------------ */
@@ -230,10 +232,11 @@ input[type="submit"]#logOut {
 
 .bookEntry {
   display: inline-block;
-  width: calc(33% - 40px);
+  width: calc(33% - 60px);
   min-width: 300px;
   height: 100px;
-  padding: 20px;
+  padding: 30px;
+  padding-top: 5px;
   border-right: 1px solid #EEEEEE;
   border-bottom: 1px solid #EEEEEE;
 }
@@ -249,24 +252,29 @@ input[type="submit"]#logOut {
   width: 90%;
   font-size: 30px;
   height: 30px;
+  font-weight: bolder;
 }
 
 .titleDiv {
-  margin-top: 35px;
+  margin-top: 40px;
   float: left;
+  width: calc(100% - 80px);
+  height: 60px;
   font-size: 30px;
 }
 
 .priceDiv {
-  margin-top: 30px;
+  margin-top: 35px;
   float: right;
+  width: 80px;
   font-size: 40px;
   color: #999999;
+  text-align: right;
 }
 
 .sellerDiv {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   right: 20px;
   font-size: 13px;
   color: #BBBBBB;
@@ -274,7 +282,7 @@ input[type="submit"]#logOut {
 
 .addedDiv {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 20px;
   font-size: 14px;
   color: #BBBBBB;

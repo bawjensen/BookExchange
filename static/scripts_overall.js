@@ -3,17 +3,18 @@ $(function() {
 	var offerTemplate;
 	var requestTemplate;
 
-	var initialFadeInTime = 1250;
+	var initialFadeDelay = 1200;
+	var bookFadeDelay = 250;
 
 	var dataStore = new Firebase('https://wubex.firebaseio.com/'); // instantiate Firebase object
 	var auth = new FirebaseSimpleLogin(dataStore, function(err, user) {
 		if (err) {
 			switch(err.code) {
 				case 'INVALID_USER':
-				case 'INVALID_PASSWORD': alert('Email-password pair was invalid.'); break;
+				case 'INVALID_PASSWORD': alert('The given email/password pair was invalid'); break;
 			}
 			console.log(err);
-			$('.displayLink').hide().html('Log In | Sign Up').fadeIn(initialFadeInTime);
+			$('.displayLink').hide().html('Log In | Sign Up').fadeIn(initialFadeDelay);
 		}
 		else if (user) {
 			currentUser = user.email.split(/@/g)[0];
@@ -21,16 +22,12 @@ $(function() {
 
 			currentUser = toTitleCase(names[1] + ' ' + names[0]);
 
-			// console.log(currentUser + ' logged in.');
-
-			$('.displayLink').html( 'Welcome, ' + currentUser ).hide().fadeIn(initialFadeInTime);
+			$('.displayLink').html( 'Welcome, ' + currentUser ).hide().fadeIn(initialFadeDelay);
 		}
 		else {
-			// console.log('User logged out.');
-
 			currentUser = undefined;
 			
-			$('.displayLink').hide().html('Log In | Sign Up').fadeIn(initialFadeInTime);
+			$('.displayLink').hide().html('Log In | Sign Up').fadeIn(initialFadeDelay);
 		}
 
 		clearDisplayAreas();
@@ -105,6 +102,35 @@ $(function() {
 		auth.logout();
 	});
 
+	$('input[type=search]').keyup(function(event) {
+		// event = event || window.event;
+		// var charCode = event.which || event.keyCode;
+		// var charTyped = String.fromCharCode(charCode).toLowerCase();
+
+		// console.log($(this).val());
+
+		var searchKey = this.value;
+		// console.log(searchKey);
+
+		if (this.id == 'searchBooks') {
+			var searchingIn = '.titleDiv';
+		}
+		else {
+			var searchingIn = '.classDiv';
+		}
+
+		$.each($('.bookEntry ' + searchingIn), function() {
+			if (this.innerHTML.toLowerCase().search(searchKey) == -1) {
+				$(this).parent().fadeOut(bookFadeDelay);
+			}
+			else {
+				$(this).parent().fadeIn(bookFadeDelay);
+			}
+		});
+	});
+
+	// ------------------------------------------------------------------------------------
+
 	if (window.location.pathname == '/create') {
 		$.get('/static/classes.html', function(data) {
 			$('#class').append(data);
@@ -136,7 +162,7 @@ $(function() {
 	// ------------------------------------------------------------------------------------
 
 	function clearDisplayAreas() {
-		$('.displayArea').html('').fadeIn(initialFadeInTime);
+		$('.displayArea').html('').fadeIn(initialFadeDelay);
 	}
 
 	function setUpFirebaseCallbacks() {
@@ -154,6 +180,8 @@ $(function() {
 			else if (data.type == 'request' && $('.buyDisplayArea').length) {
 				$('.buyDisplayArea').append( fillTemplate(offerTemplate, data, dataSnapshot.name()) );
 			}
+
+			resizeTitle(dataSnapshot.name());
 		});
 
 		dataStore.on('child_removed', function(dataSnapshot) {
@@ -173,6 +201,22 @@ $(function() {
 		});
 	}
 
+	function resizeTitle(divID) {
+		divID = '#' + divID;
+
+		if ($(divID).length) {
+			var titleDiv = $(divID+' .titleDiv');
+			var currFontSize = parseInt(titleDiv.css('font-size'));
+
+			do {
+				currFontSize--;
+				titleDiv.css('font-size', currFontSize.toString() + 'px');
+			} while (titleDiv[0].scrollHeight > titleDiv[0].offsetHeight);
+
+			console.log($(divID+' .titleDiv').css('width'));
+		}
+	}
+
 	function fillTemplate(offerTemplate, data, id) {
 		offerTemplate = offerTemplate.replace("{id}", id);
 		offerTemplate = offerTemplate.replace("{title}", data.title);
@@ -183,12 +227,6 @@ $(function() {
 
 		return offerTemplate;
 
-	}
-
-	function cookieGet(name) {
-		var value = "; " + document.cookie;
-		var parts = value.split("; " + name + "=");
-		if (parts.length == 2) return parts.pop().split(";").shift();
 	}
 
 	function toTitleCase(str) {
