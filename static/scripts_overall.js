@@ -4,6 +4,7 @@ $(function() {
 	var requestTemplate;
 
 	var initialFadeDelay = 1200;
+	var logInSlideDelay = 400;
 	var bookFadeDelay = 250;
 
 	var dataStore = new Firebase('https://wubex.firebaseio.com/'); // instantiate Firebase object
@@ -23,6 +24,7 @@ $(function() {
 			currentUser = toTitleCase(names[1] + ' ' + names[0]);
 
 			$('.displayLink').html( 'Welcome, ' + currentUser ).hide().fadeIn(initialFadeDelay);
+			$('.logInArea').slideUp(logInSlideDelay);
 		}
 		else {
 			currentUser = undefined;
@@ -47,10 +49,11 @@ $(function() {
 	// ------------------------------------------------------------------------------------
 
 	$('.displayLink').click(function() {
-		$(this).siblings('.logInArea').slideToggle(400);
+		$(this).siblings('.logInArea').slideToggle(logInSlideDelay);
 	});
 
-	$('input[type=submit]#logIn').click(function() {
+	$('input[type=submit]#logIn').click(function(event) {
+		console.dir(event);
 		event.preventDefault();
 
 		var username = $(this).siblings('#username').val();
@@ -62,7 +65,7 @@ $(function() {
 		});
 	});
 
-	$('input[type=submit]#signUp').click(function() {
+	$('input[type=submit]#signUp').click(function(event) {
 		event.preventDefault();
 
 		var username = $(this).siblings('#username').val();
@@ -96,21 +99,14 @@ $(function() {
 		});
 	});
 
-	$('input[type=submit]#logOut').click(function() {
+	$('input[type=submit]#logOut').click(function(event) {
 		event.preventDefault();
 
 		auth.logout();
 	});
 
 	$('input[type=search]').keyup(function(event) {
-		// event = event || window.event;
-		// var charCode = event.which || event.keyCode;
-		// var charTyped = String.fromCharCode(charCode).toLowerCase();
-
-		// console.log($(this).val());
-
 		var searchKey = this.value;
-		// console.log(searchKey);
 
 		if (this.id == 'searchBooks') {
 			var searchingIn = '.titleDiv';
@@ -120,7 +116,7 @@ $(function() {
 		}
 
 		$.each($('.bookEntry ' + searchingIn), function() {
-			if (this.innerHTML.toLowerCase().search(searchKey) == -1) {
+			if (this.innerHTML.toLowerCase().search(searchKey.toLowerCase()) == -1) {
 				$(this).parent().fadeOut(bookFadeDelay);
 			}
 			else {
@@ -128,6 +124,8 @@ $(function() {
 			}
 		});
 	});
+
+	// ------------------------------------------------------------------------------------
 
 	// ------------------------------------------------------------------------------------
 
@@ -162,26 +160,46 @@ $(function() {
 	// ------------------------------------------------------------------------------------
 
 	function clearDisplayAreas() {
-		$('.displayArea').html('').fadeIn(initialFadeDelay);
+		$('.displayArea').html('');
 	}
 
 	function setUpFirebaseCallbacks() {
 		dataStore.on('child_added', function(dataSnapshot) {
 			var data = dataSnapshot.val();
+			var showing = true;
 
 			if (data.owner == currentUser) {
-				$('.personalDisplayArea').append( fillTemplate(offerTemplate, data, dataSnapshot.name()) );
+				var displayArea = '.personalDisplayArea';
 			}
-
 			else if (data.type == 'offer' && $('.sellDisplayArea').length) {
-				$('.sellDisplayArea').append( fillTemplate(offerTemplate, data, dataSnapshot.name()) );
+				var displayArea = '.sellDisplayArea';
 			}
-
 			else if (data.type == 'request' && $('.buyDisplayArea').length) {
-				$('.buyDisplayArea').append( fillTemplate(offerTemplate, data, dataSnapshot.name()) );
+				var displayArea = '.buyDisplayArea';
+			}
+			else {
+				showing = false;
 			}
 
-			resizeTitle(dataSnapshot.name());
+			if (showing) {
+				$(displayArea).append( fillTemplate(offerTemplate, data, dataSnapshot.name()) ).find('#'+dataSnapshot.name()).hide().fadeIn(initialFadeDelay);
+				resizeTitle(dataSnapshot.name());
+			}
+
+			if (window.location.pathname == '/account') {
+				$.get('/static/deleteEntry.html', function(data) {
+					console.log('appending');
+					console.log(data);
+					console.dir($('.bookEntry'));
+					$('.bookEntry').append(data);
+					console.log('appending');
+				});
+
+
+				$('.deleteEntry').click(function() {
+					return confirm('Delete this book?');
+				});
+			}
 		});
 
 		dataStore.on('child_removed', function(dataSnapshot) {

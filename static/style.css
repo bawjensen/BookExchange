@@ -203,27 +203,27 @@ input[type="submit"]#logOut {
   margin-bottom: 30px;
 }
 
-.personalDisplayArea {
+/*.personalDisplayArea {
   display: none;
-}
+}*/
 
 .personalDisplayArea:before {
   content: 'Your Books';
   color: #FF8622;
 }
 
-.sellDisplayArea {
+/*.sellDisplayArea {
   display: none;
-}
+}*/
 
 .sellDisplayArea:before {
   content: 'Selling';
   color: #FC6500;
 }
 
-.buyDisplayArea {
+/*.buyDisplayArea {
   display: none;
-}
+}*/
 
 .buyDisplayArea:before {
   content: 'Buying';
