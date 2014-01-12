@@ -217,7 +217,7 @@ input[type="submit"]#logOut {
 }*/
 
 .sellDisplayArea:before {
-  content: 'Selling';
+  content: 'People Are Selling';
   color: #FC6500;
 }
 
@@ -226,7 +226,7 @@ input[type="submit"]#logOut {
 }*/
 
 .buyDisplayArea:before {
-  content: 'Buying';
+  content: 'People Are Buying';
   color: #FF5200;
 }
 
