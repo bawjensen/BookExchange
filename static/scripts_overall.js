@@ -3,8 +3,8 @@ $(function() {
 	var offerTemplate;
 	var requestTemplate;
 
-	var initialFadeDelay = 1200;
-	var logInSlideDelay = 400;
+	var initialFadeDelay = 200;
+	var logInSlideDelay = 300;
 	var bookFadeDelay = 250;
 
 	var dataStore = new Firebase('https://wubex.firebaseio.com/'); // instantiate Firebase object
@@ -182,22 +182,19 @@ $(function() {
 			}
 
 			if (showing) {
-				$(displayArea).append( fillTemplate(offerTemplate, data, dataSnapshot.name()) ).find('#'+dataSnapshot.name()).hide().fadeIn(initialFadeDelay);
+				$( fillTemplate(data.type, offerTemplate, data, dataSnapshot.name()) ).hide().appendTo(displayArea).fadeIn(initialFadeDelay);
 				resizeTitle(dataSnapshot.name());
 			}
 
 			if (window.location.pathname == '/account') {
 				$.get('/static/deleteEntry.html', function(data) {
-					console.log('appending');
-					console.log(data);
-					console.dir($('.bookEntry'));
 					$('.bookEntry').append(data);
-					console.log('appending');
-				});
 
-
-				$('.deleteEntry').click(function() {
-					return confirm('Delete this book?');
+					$('.deleteEntry').click(function() {
+						if ( confirm('Delete this book?') ) {
+							dataSnapshot.ref().remove();
+						}
+					});
 				});
 			}
 		});
@@ -235,13 +232,16 @@ $(function() {
 		}
 	}
 
-	function fillTemplate(offerTemplate, data, id) {
-		offerTemplate = offerTemplate.replace("{id}", id);
-		offerTemplate = offerTemplate.replace("{title}", data.title);
-		offerTemplate = offerTemplate.replace("{class}", data.class);
-		offerTemplate = offerTemplate.replace("{price}", data.price);
-		offerTemplate = offerTemplate.replace("{added}", timeAgo(data.added));
-		offerTemplate = offerTemplate.replace("{seller}", data.owner);
+	function fillTemplate(type, offerTemplate, data, id) {
+		offerTemplate = offerTemplate.replace(/\{id\}/g, id);
+		offerTemplate = offerTemplate.replace(/\{type\}/g, type);
+		offerTemplate = offerTemplate.replace(/\{title\}/g, data.title);
+		offerTemplate = offerTemplate.replace(/\{class\}/g, data.class);
+		offerTemplate = offerTemplate.replace(/\{price\}/g, data.price);
+		offerTemplate = offerTemplate.replace(/\{added\}/g, timeAgo(data.added));
+		offerTemplate = offerTemplate.replace(/\{seller\}/g, data.owner);
+
+		
 
 		return offerTemplate;
 

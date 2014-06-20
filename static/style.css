@@ -23,10 +23,10 @@ header {
   left: 0;
   width: 100%;
   height: 40px;
-  background: -webkit-linear-gradient(#FFAD00, #FC5B00); /* For Safari */
-  background: -o-linear-gradient(#FFAD00, #FC5B00); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#FFAD00, #FC5B00); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#FFAD00, #FC5B00); /* Standard syntax */
+  background: -webkit-linear-gradient(#FF9900, #FC5100); /* For Safari */
+  background: -o-linear-gradient(#FF9900, #FC5100); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#FF9900, #FC5100); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#FF9900, #FC5100); /* Standard syntax */
 }
 
 footer {
@@ -203,27 +203,15 @@ input[type="submit"]#logOut {
   margin-bottom: 30px;
 }
 
-/*.personalDisplayArea {
-  display: none;
-}*/
-
 .personalDisplayArea:before {
   content: 'Your Books';
   color: #FF8622;
 }
 
-/*.sellDisplayArea {
-  display: none;
-}*/
-
 .sellDisplayArea:before {
   content: 'People Are Selling';
   color: #FC6500;
 }
-
-/*.buyDisplayArea {
-  display: none;
-}*/
 
 .buyDisplayArea:before {
   content: 'People Are Buying';
@@ -245,22 +233,22 @@ input[type="submit"]#logOut {
   display: block;
 }
 
-.classDiv {
+.titleDiv {
   position: absolute;
   text-align: center;
   margin: 0 auto;
   width: 90%;
   font-size: 30px;
   height: 30px;
-  font-weight: bolder;
 }
 
-.titleDiv {
+.classDiv {
   margin-top: 40px;
   float: left;
   width: calc(100% - 80px);
   height: 60px;
   font-size: 30px;
+  font-weight: bolder;
 }
 
 .priceDiv {
@@ -274,18 +262,31 @@ input[type="submit"]#logOut {
 
 .sellerDiv {
   position: absolute;
-  bottom: 10px;
-  right: 20px;
-  font-size: 13px;
+  top: 10px;
+  left: 20px;
+  font-size: 16px;
   color: #BBBBBB;
 }
 
 .addedDiv {
   position: absolute;
   bottom: 10px;
-  left: 20px;
+  right: 20px;
   font-size: 14px;
   color: #BBBBBB;
+}
+
+.deleteEntry {
+  position: absolute;
+  top: -5px;
+  right: 0;
+  width: 60px;
+  height: 20px;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  color: red;
+  font-weight: bolder;
 }
 
 /* ------------------------------------------ */
