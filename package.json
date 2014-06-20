@@ -1,13 +1,15 @@
 {
   "name": "node_wbe",
   "version": "0.0.1",
-  "description": "a used book exchange",
+  "description": "a used stuff exchange",
   "main": "web.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "book",
+    "textbook",
+    "used",
     "exchange"
   ],
   "author": "bawjensen",
@@ -25,9 +27,6 @@
     "express": "~3.4.7",
     "ejs": "~0.8.5",
     "jade": "~1.0.1",
-    "passport": "~0.1.17",
-    "passport-local": "~0.1.6",
-    "connect-flash": "~0.1.1",
     "firebase": "~1.0.1-npm"
   }
 }
