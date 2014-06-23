@@ -2,7 +2,7 @@ doctype html
 html
   head
     meta(charset='utf-8')
-    title #{title}
+    title U.S.E. Wheaton
     link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Roboto:400,700,900,400italic')
     link(rel='stylesheet', type='text/css', href='/css/style.css')
     script(type='text/javascript', src='https://cdn.firebase.com/v0/firebase.js')
@@ -12,29 +12,15 @@ html
     block scripts
 
   body
-    header
-      .siteName: a(href='/') WUBEx
-      .hiddenHeaderMenu
-        .displayLink
-        .logInArea
-          form#logIn
-            input#username(type='email', placeholder='Email')
-            input#password(type='password', placeholder='Password')
-            input#logIn(type='submit', value='Log In')
-            input#signUp(type='submit', value='Sign Up')
-            input#logOut(type='submit', value='Log Out')
-      .search
-        input#searchBooks(type='search', placeholder='Search Books')
-        input#searchClasses(type='search', placeholder='Search Classes')
-        
     .container
-      .mainContent
-        block content
-      .sidebar
-        block sidebar
+      header
+        .site-name: a(href='/') Used Stuff Exchange Wheaton
+          
+      .main-content
+        |stuff goes here
 
-    footer
-      p Maintained by Bryan Jensen '15
+      footer
+        p Maintained by Bryan Jensen '15
   script.
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

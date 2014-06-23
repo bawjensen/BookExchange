@@ -24,7 +24,7 @@ app.post('/login', function(req, res) {
 });
 
 app.get('/', function(req, res) {
-  res.render( 'mainpage.jade', { 'title': 'USEW' } );
+  res.render( 'mainpage.jade'/*, { 'title': 'USE Wheaton' }*/ );
 });
 
 var port = process.env.PORT || 7500;
